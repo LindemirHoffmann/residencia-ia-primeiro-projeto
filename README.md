@@ -6,11 +6,19 @@ Projeto desenvolvido durante a **Residência em Trilhas de Tecnologias de IA Gen
 
 ```
 ├── AULA_01/
-│   ├── hello_llm.py        # Script principal - primeira interação com LLM
-│   └── hello_llm.ipynb     # Versão Jupyter Notebook
-├── .env.example             # Exemplo de variáveis de ambiente
-├── .gitignore               # Arquivos ignorados pelo Git
-├── requirements.txt         # Dependências do projeto
+│   ├── hello_llm.py            # Primeira interação com LLM
+│   └── hello_llm.ipynb         # Versão Jupyter Notebook
+├── AULA_02/
+│   ├── *.pdf                   # PDFs dos artigos originais
+│   ├── md_output/              # Artigos convertidos para Markdown
+│   └── json_output/            # Metadados extraídos em JSON
+├── atv/
+│   └── *.pdf                   # PDFs das atividades
+├── converter.py                # Script de conversão PDF → Markdown (Docling)
+├── extrair_metadados.py        # Script de extração de metadados via LLM
+├── .env.example                # Exemplo de variáveis de ambiente
+├── .gitignore                  # Arquivos ignorados pelo Git
+├── requirements.txt            # Dependências do projeto
 └── README.md
 ```
 
@@ -59,15 +67,29 @@ Edite o `.env` com suas informações:
 OPENAI_API_KEY=sua-api-key-do-openrouter
 OPENAI_MODEL=gpt-5.4-mini
 OPENAI_BASE_URL=https://openrouter.ai/api/v1
+
+OPENROUTER_API_KEY=sua-chave-do-openrouter
+OPENROUTER_BASE_URL=https://openrouter.ai/api/v1/chat/completions
 ```
 
 > 💡 **Dica:** Crie sua API key gratuitamente em [openrouter.ai/settings/keys](https://openrouter.ai/settings/keys)
 
 ### 5. Executar o projeto
 
+**Aula 01 — Hello LLM:**
 ```bash
 cd AULA_01
 python hello_llm.py
+```
+
+**Aula 02 — Conversão de PDF para Markdown:**
+```bash
+python converter.py
+```
+
+**Aula 02 — Extração de metadados via LLM:**
+```bash
+python extrair_metadados.py
 ```
 
 ## 🛠️ Tecnologias Utilizadas
@@ -79,12 +101,15 @@ python hello_llm.py
 | **OpenRouter** | Gateway de acesso a diversos modelos de IA |
 | **python-dotenv** | Gerenciamento de variáveis de ambiente |
 | **Jupyter Notebook** | Ambiente interativo para experimentação |
+| **Docling** | Conversão de documentos PDF para Markdown |
+| **Requests** | Chamadas HTTP para APIs REST |
 
 ## 📌 Aulas
 
 | Aula | Tema | Status |
 |---|---|---|
 | Aula 01 | Hello LLM — Primeira interação com modelo de linguagem | ✅ Concluída |
+| Aula 02 | Conversão de PDFs para Markdown e extração de metadados com LLM | ✅ Concluída |
 
 ## 📝 Licença
 
