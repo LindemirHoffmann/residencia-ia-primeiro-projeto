@@ -12,6 +12,10 @@ Projeto desenvolvido durante a **Residência em Trilhas de Tecnologias de IA Gen
 │   ├── *.pdf                   # PDFs dos artigos originais
 │   ├── md_output/              # Artigos convertidos para Markdown
 │   └── json_output/            # Metadados extraídos em JSON
+├── AULA 03/
+│   ├── atividade03.ipynb         # Notebook da atividade (Google Colab)
+│   ├── embeddings_distancias.py  # Embeddings, distância euclidiana e cosseno
+│   └── busca_semantica.py        # Busca semântica em documentos Markdown
 ├── atv/
 │   └── *.pdf                   # PDFs das atividades
 ├── converter.py                # Script de conversão PDF → Markdown (Docling)
@@ -92,6 +96,46 @@ python converter.py
 python extrair_metadados.py
 ```
 
+**Aula 03 — Embeddings e Distância:**
+```bash
+cd "AULA 03"
+python embeddings_distancias.py
+```
+
+**Aula 03 — Busca Semântica:**
+```bash
+cd "AULA 03"
+python busca_semantica.py
+```
+
+### 6. Executar a Aula 03 no Google Colab
+
+A Aula 03 possui um notebook (`atividade03.ipynb`) preparado para rodar diretamente no **Google Colab**.
+
+**Passo 1 — Abrir o notebook no Colab:**
+- Faça upload do arquivo `AULA 03/atividade03.ipynb` no [Google Colab](https://colab.research.google.com/), ou
+- Se o repositório estiver no GitHub, abra diretamente via: `Arquivo → Abrir notebook → GitHub`
+
+**Passo 2 — Configurar a API Key como Secret:**
+1. No Colab, clique no ícone de **🔑 chave** na barra lateral esquerda (Secrets)
+2. Clique em **"Adicionar novo secret"**
+3. Defina o **Nome** como: `OPENROUTER_API_KEY`
+4. Cole o **Valor** com sua chave da API do OpenRouter
+5. Ative o toggle **"Acesso ao notebook"**
+
+> 💡 **Dica:** O notebook usa `google.colab.userdata.get('OPENROUTER_API_KEY')` para ler a chave de forma segura, sem expor no código.
+
+**Passo 3 — Executar as células:**
+- Execute todas as células em ordem (`Runtime → Run all` ou `Ctrl+F9`)
+- O notebook irá:
+  - Instalar a dependência `openai` automaticamente
+  - Calcular distâncias euclidiana e de cosseno entre embeddings
+  - Gerar gráfico 3D com PCA
+  - Comparar frases com uma frase âncora
+  - Realizar busca semântica nos arquivos Markdown (necessário fazer upload dos `.md` da Aula 02)
+
+> ⚠️ **Upload dos arquivos Markdown:** Na Parte 3 (Busca Semântica), o notebook solicita o upload dos arquivos `.md` da pasta `AULA_02/md_output/`. Tenha esses arquivos prontos para enviar quando solicitado.
+
 ## 🛠️ Tecnologias Utilizadas
 
 | Tecnologia | Descrição |
@@ -103,6 +147,10 @@ python extrair_metadados.py
 | **Jupyter Notebook** | Ambiente interativo para experimentação |
 | **Docling** | Conversão de documentos PDF para Markdown |
 | **Requests** | Chamadas HTTP para APIs REST |
+| **NumPy** | Computação vetorial e manipulação de arrays |
+| **Matplotlib** | Geração de gráficos e visualizações |
+| **scikit-learn** | PCA para redução de dimensionalidade |
+| **Pandas** | Manipulação e exibição de dados tabulares |
 
 ## 📌 Aulas
 
@@ -110,6 +158,7 @@ python extrair_metadados.py
 |---|---|---|
 | Aula 01 | Hello LLM — Primeira interação com modelo de linguagem | ✅ Concluída |
 | Aula 02 | Conversão de PDFs para Markdown e extração de metadados com LLM | ✅ Concluída |
+| Aula 03 | Embeddings, Distância Euclidiana, Cosseno e Busca Semântica | ✅ Concluída |
 
 ## 📝 Licença
 
