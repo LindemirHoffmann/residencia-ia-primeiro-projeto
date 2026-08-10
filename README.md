@@ -16,6 +16,14 @@ Projeto desenvolvido durante a **Residência em Trilhas de Tecnologias de IA Gen
 │   ├── atividade03.ipynb         # Notebook da atividade (Google Colab)
 │   ├── embeddings_distancias.py  # Embeddings, distância euclidiana e cosseno
 │   └── busca_semantica.py        # Busca semântica em documentos Markdown
+├── AULA 04/
+│   ├── arquivos/                 # PDFs dos artigos (não versionado)
+│   ├── documentos/               # Markdowns gerados pelo converter (não versionado)
+│   ├── converter_pdfs.py         # Converte PDFs → Markdown com pymupdf4llm
+│   ├── chunking_comparativo.py   # Comparação de 10 estratégias de chunking
+│   ├── chunking_comparativo.ipynb# Versão Google Colab
+│   ├── chunking_refinado.py      # Chunking calibrado com overlaps refinados
+│   └── chunking_refinado.ipynb   # Versão Google Colab
 ├── atv/
 │   └── *.pdf                   # PDFs das atividades
 ├── converter.py                # Script de conversão PDF → Markdown (Docling)
@@ -108,6 +116,24 @@ cd "AULA 03"
 python busca_semantica.py
 ```
 
+**Aula 04 — Converter PDFs para Markdown:**
+```bash
+cd "AULA 04"
+python converter_pdfs.py
+```
+
+**Aula 04 — Chunking Comparativo (10 estratégias):**
+```bash
+cd "AULA 04"
+python chunking_comparativo.py
+```
+
+**Aula 04 — Chunking Refinado (overlaps calibrados):**
+```bash
+cd "AULA 04"
+python chunking_refinado.py
+```
+
 ### 6. Executar a Aula 03 no Google Colab
 
 A Aula 03 possui um notebook (`atividade03.ipynb`) preparado para rodar diretamente no **Google Colab**.
@@ -151,6 +177,8 @@ A Aula 03 possui um notebook (`atividade03.ipynb`) preparado para rodar diretame
 | **Matplotlib** | Geração de gráficos e visualizações |
 | **scikit-learn** | PCA para redução de dimensionalidade |
 | **Pandas** | Manipulação e exibição de dados tabulares |
+| **pymupdf4llm** | Conversão de PDFs para Markdown estruturado |
+| **LangChain Text Splitters** | Estratégias de chunking (fixo, recursivo, Markdown) |
 
 ## 📌 Aulas
 
@@ -159,6 +187,7 @@ A Aula 03 possui um notebook (`atividade03.ipynb`) preparado para rodar diretame
 | Aula 01 | Hello LLM — Primeira interação com modelo de linguagem | ✅ Concluída |
 | Aula 02 | Conversão de PDFs para Markdown e extração de metadados com LLM | ✅ Concluída |
 | Aula 03 | Embeddings, Distância Euclidiana, Cosseno e Busca Semântica | ✅ Concluída |
+| Aula 04 | Chunking Comparativo — 10 estratégias com overlaps calibrados e PDF → Markdown | ✅ Concluída |
 
 ## 📝 Licença
 
