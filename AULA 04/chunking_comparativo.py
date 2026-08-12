@@ -124,6 +124,21 @@ def estatisticas_chunks(chunks):
 
 
 # =============================================================================
+# Estrategia 8 — Por sentenca, agrupando 3
+# =============================================================================
+
+def split_por_sentencas_agrupadas(texto, n=3):
+    """Divide o texto em sentencas e agrupa N sentencas por chunk."""
+    sentencas = re.split(r'(?<=[.!?])\s+', texto.strip())
+    sentencas = [s.strip() for s in sentencas if len(s.strip()) > 10]
+    chunks = []
+    for i in range(0, len(sentencas), n):
+        grupo = sentencas[i:i + n]
+        chunks.append(' '.join(grupo))
+    return [c for c in chunks if len(c) > 10]
+
+
+# =============================================================================
 # As 10 estrategias de chunking
 # =============================================================================
 
@@ -230,42 +245,39 @@ def criar_estrategias():
     })
 
     # ---- Grupo 8: Por sentenca, agrupando 3 (estrutura natural) ----
-    # Usa RecursiveCharacterTextSplitter com separadores de sentenca
-    # e chunk_size pequeno para agrupar ~3 sentencas
+    # Usa split_por_sentencas_agrupadas(): divide em sentencas e agrupa 3 por chunk
     estrategias.append({
         'grupo': 8,
         'nome': 'Por sentenca, agrupando 3',
         'variavel': 'estrutura natural',
-        'splitter': RecursiveCharacterTextSplitter(
-            separators=['. ', '! ', '? ', '\n'],
-            chunk_size=500,
-            chunk_overlap=0,
-            keep_separator=True,
-        ),
-        'tipo': 'texto',
+        'splitter': None,  # usa split_por_sentencas_agrupadas()
+        'tipo': 'sentenca',
     })
 
     # ---- Grupo 9: Recursivo (separadores hierarquicos) ----
+    # Prioriza: paragrafos → linhas → espacos → caracteres
     estrategias.append({
         'grupo': 9,
         'nome': 'Recursivo (hierarquico)',
         'variavel': 'estrategia composta',
         'splitter': RecursiveCharacterTextSplitter(
+            separators=['\n\n', '\n', '. ', '! ', '? ', ' ', ''],
             chunk_size=500,
             chunk_overlap=50,
         ),
         'tipo': 'texto',
     })
 
-    # ---- Grupo 10: Por secao / heading do Markdown ----
+    # ---- Grupo 10: Por secao / heading do Markdown (3 niveis) ----
     estrategias.append({
         'grupo': 10,
         'nome': 'Por secao/heading Markdown',
         'variavel': 'estrutura semantica',
         'splitter': MarkdownHeaderTextSplitter(
             headers_to_split_on=[
-                ('#', 'Header 1'),
-                ('##', 'Header 2'),
+                ('#', 'h1'),
+                ('##', 'h2'),
+                ('###', 'h3'),
             ],
         ),
         'tipo': 'markdown',
@@ -314,6 +326,9 @@ def main():
                 # MarkdownHeaderTextSplitter retorna Documents com page_content
                 chunks_docs = splitter.split_text(texto_completo)
                 chunks = [doc.page_content for doc in chunks_docs if doc.page_content.strip()]
+            elif est['tipo'] == 'sentenca':
+                # Estrategia 8: agrupa 3 sentencas por chunk via regex
+                chunks = split_por_sentencas_agrupadas(texto_completo, n=3)
             else:
                 chunks = splitter.split_text(texto_completo)
                 chunks = [c for c in chunks if c.strip()]

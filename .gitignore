@@ -59,7 +59,9 @@ Thumbs.db
 # AULA 04 — arquivos pesados gerados localmente
 AULA 04/arquivos/
 AULA 04/documentos/
+AULA 04/results/
 AULA 04/*.png
 AULA_04/arquivos/
 AULA_04/documentos/
+AULA_04/results/
 AULA_04/*.png
