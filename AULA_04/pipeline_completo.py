@@ -80,9 +80,8 @@ else:
 BASE_DIR   = Path(__file__).resolve().parent
 PASTA_PDF  = BASE_DIR / "arquivos"
 PASTA_DOCS = BASE_DIR / "documentos"
-PASTA_RES  = BASE_DIR / "results"
+PASTA_RES  = BASE_DIR          # resultados salvos direto em AULA_04/
 PASTA_DOCS.mkdir(exist_ok=True)
-PASTA_RES.mkdir(exist_ok=True)
 
 
 # ─────────────────────────────────────────────
